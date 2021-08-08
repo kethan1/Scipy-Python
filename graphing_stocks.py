@@ -68,7 +68,7 @@ def graph_many_stocks(*args):
         graph_stock(*company)
 
     lines = [Line2D([0], [0], color='k', linewidth=3) for _ in the_stocks]
-    plt.legend(lines, [f'{args[index]}: {min(company[1])} - {max(company[1])}' for index, company in enumerate(companies)])
+    plt.legend(lines, [f'{args[index]}: {round(min(company[1]), 2)} - {round(max(company[1]), 2)}' for index, company in enumerate(companies)])
     plt.ylim(min([min(company[1]) for company in companies]), max([max(company[1]) for company in companies]))
 
 
