@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
+from matplotlib.lines import Line2D
 import json
 import stocks
 
@@ -65,6 +66,9 @@ def graph_many_stocks(*args):
     companies = [get_data(symbol) for symbol in args]
     for company in companies:
         graph_stock(*company)
+
+    lines = [Line2D([0], [0], color='k', linewidth=3) for _ in the_stocks]
+    plt.legend(lines, [f'{args[index]}: {min(company[1])} - {max(company[1])}' for index, company in enumerate(companies)])
     plt.ylim(min([min(company[1]) for company in companies]), max([max(company[1]) for company in companies]))
 
 
